@@ -1,0 +1,16 @@
+{
+    "welcome": "Xush kelibsiz",
+    "dashboard": "Boshqaruv paneli",
+    "settings": "Sozlamalar",
+    "logout": "Chiqish",
+    "language": "Til",
+    "profile": "Profil",
+  
+
+  
+    "reset_password": "Parolni almashtirish",
+    "old_password": "Eski parol",
+    "new_password": "Yangi parol",
+    "confirm_new_password": "Yangi parolni tasdiqlash",
+    "save": "Saqlash"
+  }

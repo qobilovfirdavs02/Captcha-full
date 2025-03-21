@@ -1,0 +1,16 @@
+{
+    "welcome": "Добро пожаловать",
+    "dashboard": "Панель управления",
+    "settings": "Настройки",
+    "logout": "Выход",
+    "language": "Язык",
+    "profile": "Профиль",
+
+
+    
+    "reset_password": "Сброс пароля",
+    "old_password": "Старый пароль",
+    "new_password": "Новый пароль",
+    "confirm_new_password": "Подтвердить новый пароль",
+    "save": "Сохранить"
+  }

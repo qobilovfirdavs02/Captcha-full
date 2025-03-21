@@ -1,0 +1,15 @@
+{
+    "welcome": "Welcome",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "logout": "Logout",
+    "language": "Language",
+    "profile": "Profile",
+    
+  
+    "reset_password": "Reset Password",
+    "old_password": "Old Password",
+    "new_password": "New Password",
+    "confirm_new_password": "Confirm New Password",
+    "save": "Save"
+  }

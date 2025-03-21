@@ -40,6 +40,21 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public void resetPassword(String email, String oldPassword, String newPassword) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new IllegalArgumentException("Foydalanuvchi topilmadi!");
+        }
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Eski parol noto‘g‘ri!");
+        }
+        if (!isValidPassword(newPassword)) {
+            throw new IllegalArgumentException("Yangi parol talablarga mos emas!");
+        }
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
     private boolean isValidPassword(String password) {
         return password.length() >= 8 &&
                 password.matches(".*[A-Z].*") &&

@@ -1,4 +1,43 @@
-<div class="container" *ngIf="user">
-    <h2>Profil</h2>
-    <p>Email: {{ user.email }}</p>
+<div class="profile-container">
+  <header class="header">
+    <h1>{{ 'profile' | translate }}</h1>
+    <div class="header-actions">
+      <div class="lang-dropdown">
+        <button class="lang-switch" (click)="toggleDropdown()">
+          <i class="fas fa-globe"></i> {{ currentLang.toUpperCase() }}
+        </button>
+        <ul class="dropdown-menu" *ngIf="showDropdown">
+          <li (click)="setLanguage('uz')">UZ</li>
+          <li (click)="setLanguage('en')">EN</li>
+          <li (click)="setLanguage('ru')">RU</li>
+        </ul>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> {{ 'logout' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+    <aside class="sidebar">
+      <ul class="menu">
+        <li class="menu-item active">
+          <i class="fas fa-tachometer-alt"></i> {{ 'dashboard' | translate }}
+        </li>
+        <li class="menu-item" routerLink="/password-reset">
+          <i class="fas fa-cog"></i> {{ 'settings' | translate }}
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div *ngIf="user" class="user-info">
+        <h2>{{ 'welcome' | translate }}, {{ user.email }}!</h2>
+        
+      </div>
+      <div *ngIf="!user">
+        <p>Ma'lumotlar yuklanmoqda...</p>
+      </div>
+    </main>
   </div>
+</div>

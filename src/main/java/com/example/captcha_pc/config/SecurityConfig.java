@@ -25,14 +25,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // CSRF ni o‘chirish
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // CORS sozlamasi
-                .authorizeHttpRequests(auth -> auth // authorizeRequests o‘rniga authorizeHttpRequests
-                        .requestMatchers("/api/register", "/api/login", "/api/profile").permitAll() // Ruxsat berilgan endpointlar
-                        .anyRequest().authenticated() // Qolganlarga autentifikatsiya talab qilinadi
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/register", "/api/login", "/api/profile", "/api/password-reset").permitAll() // password-reset qo‘shildi
+                        .anyRequest().authenticated()
                 )
-                .formLogin(form -> form.disable()) // Form login o‘chirish
-                .httpBasic(basic -> basic.disable()); // HTTP Basic o‘chirish
+                .formLogin(form -> form.disable())
+                .httpBasic(basic -> basic.disable());
 
         return http.build();
     }
@@ -40,13 +40,13 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200")); // Frontend manzili
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Barcha metodlar
-        configuration.setAllowedHeaders(List.of("*")); // Barcha sarlavhalarga ruxsat
-        configuration.setAllowCredentials(true); // Cookie yoki autentifikatsiya uchun
+        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration); // Barcha endpointlar uchun
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 }
