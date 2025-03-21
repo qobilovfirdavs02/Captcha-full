@@ -5,11 +5,12 @@
     "logout": "Logout",
     "language": "Language",
     "profile": "Profile",
+    "reset password": "Reset Password",
     
   
-    "reset_password": "Reset Password",
-    "old_password": "Old Password",
-    "new_password": "New Password",
-    "confirm_new_password": "Confirm New Password",
+    
+    "old password": "Old Password",
+    "new password": "New Password",
+    "confirm new password": "Confirm New Password",
     "save": "Save"
   }

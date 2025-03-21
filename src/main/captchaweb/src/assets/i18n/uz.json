@@ -5,12 +5,13 @@
     "logout": "Chiqish",
     "language": "Til",
     "profile": "Profil",
+    "reset password": "Parolni almashtirish",
   
 
   
-    "reset_password": "Parolni almashtirish",
-    "old_password": "Eski parol",
-    "new_password": "Yangi parol",
-    "confirm_new_password": "Yangi parolni tasdiqlash",
+    
+    "old password": "Eski parol",
+    "new password": "Yangi parol",
+    "confirm new password": "Yangi parolni tasdiqlash",
     "save": "Saqlash"
   }

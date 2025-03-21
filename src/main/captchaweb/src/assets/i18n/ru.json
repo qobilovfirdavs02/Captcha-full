@@ -5,12 +5,13 @@
     "logout": "Выход",
     "language": "Язык",
     "profile": "Профиль",
+    "reset password": "Сброс пароля",
 
 
     
-    "reset_password": "Сброс пароля",
-    "old_password": "Старый пароль",
-    "new_password": "Новый пароль",
-    "confirm_new_password": "Подтвердить новый пароль",
+    
+    "old password": "Старый пароль",
+    "new password": "Новый пароль",
+    "confirm new password": "Подтвердить новый пароль",
     "save": "Сохранить"
   }
