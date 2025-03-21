@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Register</h2>
+  <form (ngSubmit)="onRegister()">
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+    <div class="password-wrapper">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+      <span class="toggle-password" (click)="togglePasswordVisibility('password')">
+        {{ showPassword ? '🙈' : '👁️' }}
+      </span>
+    </div>
+    <div class="password-wrapper">
+      <input
+        [type]="showConfirmPassword ? 'text' : 'password'"
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        required
+      />
+      <span class="toggle-password" (click)="togglePasswordVisibility('confirmPassword')">
+        {{ showConfirmPassword ? '🙈' : '👁️' }}
+      </span>
+    </div>
+    <re-captcha (resolved)="onCaptchaResolved($event)" siteKey="6LdPlfsqAAAAAL-4r83dR0cimqonJ0sCNRwbfByr"></re-captcha>
+    <button type="submit" [disabled]="!captchaResponse">Register</button>
+  </form>
+  <p class="auth-link">
+    Hisobingiz bormi? 
+    <a href="/login" class="modern-link">
+      <span class="icon">➡️</span> Kirish
+    </a>
+  </p>
+</div>
