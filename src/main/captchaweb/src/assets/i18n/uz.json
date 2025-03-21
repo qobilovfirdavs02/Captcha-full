@@ -13,5 +13,7 @@
     "old password": "Eski parol",
     "new password": "Yangi parol",
     "confirm new password": "Yangi parolni tasdiqlash",
-    "save": "Saqlash"
+    "save": "Saqlash",
+    "email": "Email",
+    "loading": "Yuklanmoqda"
   }

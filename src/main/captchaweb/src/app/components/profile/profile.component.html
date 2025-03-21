@@ -1,15 +1,21 @@
 <div class="profile-container">
   <header class="header">
+    <button class="sidebar-toggle" (click)="toggleSidebar()">
+      <i class="fas" [ngClass]="isSidebarOpen ? 'fa-times' : 'fa-bars'"></i>
+    </button>
     <h1>{{ 'profile' | translate }}</h1>
     <div class="header-actions">
+      <button class="mode-toggle" (click)="toggleDarkMode()">
+        <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+      </button>
       <div class="lang-dropdown">
         <button class="lang-switch" (click)="toggleDropdown()">
           <i class="fas fa-globe"></i> {{ currentLang.toUpperCase() }}
         </button>
         <ul class="dropdown-menu" *ngIf="showDropdown">
-          <li (click)="setLanguage('uz')">UZ</li>
-          <li (click)="setLanguage('en')">EN</li>
-          <li (click)="setLanguage('ru')">RU</li>
+          <li (click)="switchLanguage('uz')" *ngIf="currentLang !== 'uz'">UZ</li>
+          <li (click)="switchLanguage('en')" *ngIf="currentLang !== 'en'">EN</li>
+          <li (click)="switchLanguage('ru')" *ngIf="currentLang !== 'ru'">RU</li>
         </ul>
       </div>
       <button class="logout-btn" (click)="logout()">
@@ -19,9 +25,9 @@
   </header>
 
   <div class="content-wrapper">
-    <aside class="sidebar">
+    <aside class="sidebar" [ngClass]="{'sidebar-closed': !isSidebarOpen}">
       <ul class="menu">
-        <li class="menu-item active">
+        <li class="menu-item" routerLink="/dashboard">
           <i class="fas fa-tachometer-alt"></i> {{ 'dashboard' | translate }}
         </li>
         <li class="menu-item" routerLink="/password-reset">
@@ -29,15 +35,8 @@
         </li>
       </ul>
     </aside>
-
     <main class="main-content">
-      <div *ngIf="user" class="user-info">
-        <h2>{{ 'welcome' | translate }}, {{ user.email }}!</h2>
-        
-      </div>
-      <div *ngIf="!user">
-        <p>Ma'lumotlar yuklanmoqda...</p>
-      </div>
+      <!-- Hozircha bo‘sh -->
     </main>
   </div>
 </div>

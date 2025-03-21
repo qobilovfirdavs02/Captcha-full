@@ -18,9 +18,29 @@ export class PasswordResetComponent {
   showOldPassword: boolean = false;
   showNewPassword: boolean = false;
   showConfirmPassword: boolean = false;
-  showModal: boolean = false; // Modal dastlab yopiq
+  showModal: boolean = false; 
+  isDarkMode: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.isDarkMode = localStorage.getItem('darkMode') === 'true';
+    this.updateDarkMode();
+  }
+
+
+  
+   toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('darkMode', this.isDarkMode.toString());
+    this.updateDarkMode();
+  }
+
+  private updateDarkMode() {
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
 
   togglePasswordVisibility(field: 'old' | 'new' | 'confirm') {
     if (field === 'old') this.showOldPassword = !this.showOldPassword;

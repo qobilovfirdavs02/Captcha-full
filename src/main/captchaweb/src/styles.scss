@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+// O‘zgaruvchilar
+:root {
+    --background-color: #f4f6f9; // Kunduzgi rejim uchun ochiq fon
+    --text-color: #333; // Kunduzgi matn
+    --header-bg: #ffffff; // Header fon
+    --sidebar-bg: #ffffff; // Sidebar fon
+    --menu-bg: #f8f9fa; // Menu elementlari fon
+    --primary-color: #007bff; // Asosiy ko‘k rang
+    --hover-color: #0056b3; // Hover ko‘k
+    --shadow-color: rgba(0, 0, 0, 0.05); // Soya
+  }
+  
+  // Tungi rejim
+  body.dark-mode {
+    --background-color: #1a1a1a; // Tungi fon
+    --text-color: #e0e0e0; // Tungi matn
+    --header-bg: #2c2c2c; // Tungi header
+    --sidebar-bg: #2c2c2c; 
+    --menu-bg: #3a3a3a; 
+    --primary-color: #4dabf7; 
+    --hover-color: #1c8ef5; 
+    --shadow-color: rgba(0, 0, 0, 0.3); 
+  }
+  
+  // Global stillar
+  body {
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: all 0.3s ease; // Silliq o‘tish uchun
+  }

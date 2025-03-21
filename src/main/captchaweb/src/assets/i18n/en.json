@@ -12,5 +12,7 @@
     "old password": "Old Password",
     "new password": "New Password",
     "confirm new password": "Confirm New Password",
-    "save": "Save"
+    "save": "Save",
+    "email": "Email",
+    "loading": "Loading"
   }

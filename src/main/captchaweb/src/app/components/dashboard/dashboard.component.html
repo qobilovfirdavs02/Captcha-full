@@ -1,0 +1,17 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h2>{{ 'dashboard' | translate }}</h2>
+    <button class="mode-toggle" (click)="toggleDarkMode()">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+  </header>
+
+  <div class="user-info" *ngIf="user">
+    <h3>{{ 'welcome' | translate }}, {{ user.email }}!</h3>
+    <p><strong>{{ 'email' | translate }}:</strong> {{ user.email }}</p>
+    <!-- Qo‘shimcha ma'lumotlar backenddan kelsa shu yerga qo‘shiladi -->
+  </div>
+  <div class="loading" *ngIf="!user">
+    <p>{{ 'loading' | translate }}...</p>
+  </div>
+</div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -13,45 +12,54 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  user: any = null;
-  currentLang: string = 'uz';
+  currentLang: string;
   showDropdown: boolean = false;
+  isSidebarOpen: boolean = true;
+  isDarkMode: boolean = false; // Rejim holati
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private translate: TranslateService
-  ) {
+  constructor(private router: Router, private translate: TranslateService) {
     this.translate.setDefaultLang('uz');
-    this.translate.use('uz');
+    this.currentLang = localStorage.getItem('currentLang') || 'uz';
+    this.translate.use(this.currentLang);
+    this.isDarkMode = localStorage.getItem('darkMode') === 'true'; // Oxirgi rejimni olish
+    this.updateDarkMode(); // Rejimni qo‘llash
   }
 
   ngOnInit() {
     const email = localStorage.getItem('userEmail');
-    if (email) {
-      this.http.get(`http://localhost:8080/api/profile?email=${email}`).subscribe({
-        next: (response: any) => (this.user = response),
-        error: (err) => alert('Profilni yuklashda xato: ' + (err.message || 'Noma‘lum xatolik')),
-      });
-    } else {
+    if (!email) {
       this.router.navigate(['/login']);
     }
   }
-
-
-  
-
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
   }
 
-  setLanguage(lang: string) {
+  switchLanguage(lang: string) {
     this.currentLang = lang;
     this.translate.use(lang);
+    localStorage.setItem('currentLang', lang);
     this.showDropdown = false;
   }
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('darkMode', this.isDarkMode.toString());
+    this.updateDarkMode();
+  }
+
+  private updateDarkMode() {
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
 
   logout() {
     localStorage.removeItem('userEmail');
