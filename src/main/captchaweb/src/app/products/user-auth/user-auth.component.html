@@ -1,0 +1,66 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>{{ isLogin ? ('login' | translate) : ('register' | translate) }}</h2>
+    <form (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="username">{{ 'username' | translate }}</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="username"
+          name="username"
+          placeholder="{{ 'username' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group" *ngIf="!isLogin">
+        <label for="email">{{ 'email' | translate }}</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="{{ 'email' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">{{ 'password' | translate }}</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="{{ 'password' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group" *ngIf="!isLogin">
+        <label for="verifyPassword">{{ 'verify_password' | translate }}</label>
+        <input
+          type="password"
+          id="verifyPassword"
+          [(ngModel)]="verifyPassword"
+          name="verifyPassword"
+          placeholder="{{ 'verify_password' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group recaptcha-container" *ngIf="!isLogin">
+        <re-captcha
+          (resolved)="onRecaptchaResolved($event)"
+          siteKey="6LdPlfsqAAAAAL-4r83dR0cimqonJ0sCNRwbfByr"
+        ></re-captcha>
+      </div>
+      <button type="submit" class="auth-button">
+        {{ isLogin ? ('login' | translate) : ('register' | translate) }}
+      </button>
+    </form>
+    <p class="toggle-text">
+      {{ isLogin ? ('no_account' | translate) : ('have_account' | translate) }}
+      <span (click)="toggleAuthMode()" class="toggle-link">
+        {{ isLogin ? ('register' | translate) : ('login' | translate) }}
+      </span>
+    </p>
+  </div>
+</div>

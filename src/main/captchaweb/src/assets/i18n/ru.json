@@ -15,5 +15,34 @@
     "confirm new password": "Подтвердить новый пароль",
     "save": "Сохранить",
     "email": "Электронная почта",
-   "loading": "Загрузка"
+   "loading": "Загрузка",
+ 
+
+   
+    "general_management": "Общее управление",
+    "add_product": "Добавить продукт",
+    "edit_product": "Редактировать продукт",
+    "products": "Продукты",
+    "product_id": "ID продукта",
+    "name": "Название",
+    "description": "Описание",
+    "price": "Цена",
+    "stock": "Запас",
+    "images": "Изображения",
+    "actions": "Действия",
+    "add": "Добавить",
+    "update": "Обновить",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "cancel": "Отмена",
+    "image_url": "URL изображения",
+    "add_image": "Добавить изображение",
+    "category": "Категория",
+    "select_category": "Выберите категорию",
+    "shop_name": "Магазин",
+  "in_stock": "В наличии",
+  "out_of_stock": "Нет в наличии",
+  "no_products_available": "Товаров нет",
+  "footer_text": "Все права защищены",
+  "verify_password": "Подтвердить пароль"
   }

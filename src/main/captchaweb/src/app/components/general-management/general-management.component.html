@@ -1,0 +1,66 @@
+<div class="management-container">
+  <header class="management-header">
+    <h2>{{ 'general_management' | translate }}</h2>
+    <button class="mode-toggle" (click)="toggleDarkMode()">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+  </header>
+
+  <div class="product-form">
+    <h3>{{ isEditing ? ('edit_product' | translate) : ('add_product' | translate) }}</h3>
+    <form (ngSubmit)="isEditing ? updateProduct() : addProduct()">
+      <input type="text" [(ngModel)]="product.name" name="name" placeholder="{{ 'name' | translate }}" required />
+      <textarea [(ngModel)]="product.description" name="description" placeholder="{{ 'description' | translate }}" rows="3"></textarea>
+      <input type="number" [(ngModel)]="product.price" name="price" placeholder="{{ 'price' | translate }}" required />
+      <input type="number" [(ngModel)]="product.stock" name="stock" placeholder="{{ 'stock' | translate }}" required />
+      <select [(ngModel)]="product.category" name="category" required>
+        <option value="" disabled>{{ 'select_category' | translate }}</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+      <div class="image-urls">
+        <div *ngFor="let url of product.imageUrls; let i = index">
+          <input type="text" [(ngModel)]="product.imageUrls[i]" [name]="'image_url_' + i" placeholder="{{ 'image_url' | translate }}" />
+          <button type="button" (click)="removeImageUrl(i)" *ngIf="i > 0">-</button>
+        </div>
+        <button type="button" (click)="addImageUrl()">+ {{ 'add_image' | translate }}</button>
+      </div>
+      <button type="submit">{{ isEditing ? ('update' | translate) : ('add' | translate) }}</button>
+      <button type="button" (click)="resetProduct()" *ngIf="isEditing">{{ 'cancel' | translate }}</button>
+    </form>
+  </div>
+
+  <div class="product-list">
+    <h3>{{ 'products' | translate }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ 'product_id' | translate }}</th>
+          <th>{{ 'name' | translate }}</th>
+          <th>{{ 'description' | translate }}</th>
+          <th>{{ 'price' | translate }}</th>
+          <th>{{ 'stock' | translate }}</th>
+          <th>{{ 'category' | translate }}</th>
+          <th>{{ 'images' | translate }}</th>
+          <th>{{ 'actions' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.productId }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.stock }}</td>
+          <td>{{ product.category }}</td>
+          <td>
+            <img *ngFor="let url of product.imageUrls" [src]="url" alt="Product Image" class="product-image" />
+          </td>
+          <td>
+            <button (click)="startEdit(product)">{{ 'edit' | translate }}</button>
+            <button (click)="deleteProduct(product.productId)">{{ 'delete' | translate }}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

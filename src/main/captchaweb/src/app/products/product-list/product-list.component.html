@@ -1,0 +1,89 @@
+<div class="product-list-container">
+  <!-- Header -->
+  <header class="header">
+    <h1>{{ 'shop_name' | translate }}</h1>
+    <div class="controls">
+      <span class="welcome" *ngIf="isLoggedIn">{{ 'welcome' | translate }}, {{ username }}!</span>
+      <select (change)="switchLanguage($event)">
+        <option value="uz">O‘zbek</option>
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+      </select>
+      <div class="auth-buttons">
+        <button *ngIf="!isLoggedIn" class="auth-btn login-btn" (click)="navigateToAuth()">
+          {{ 'login' | translate }}
+        </button>
+        <button *ngIf="!isLoggedIn" class="auth-btn register-btn" (click)="navigateToAuth()">
+          {{ 'register' | translate }}
+        </button>
+        <button *ngIf="isLoggedIn" class="auth-btn logout-btn" (click)="logout()">
+          {{ 'logout' | translate }}
+        </button>
+      </div>
+      <button class="mode-toggle" (click)="toggleDarkMode()">
+        <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mahsulotlar ro‘yxati -->
+  <main class="products-grid">
+    <div class="product-card" *ngFor="let product of products" (click)="openModal(product)">
+      <div class="product-image">
+        <img
+          [src]="product.imageUrls[0]"
+          [alt]="product.name"
+          *ngIf="product.imageUrls && product.imageUrls.length > 0"
+        />
+      </div>
+      <div class="product-details">
+        <h3>{{ product.name }}</h3>
+        <p class="category">{{ product.category }}</p>
+        <p class="price">{{ product.price | currency: 'USD' }}</p>
+        <p class="stock" [ngClass]="{ 'out-of-stock': product.stock === 0 }">
+          {{ product.stock > 0 ? ('in_stock' | translate) + ': ' + product.stock : ('out_of_stock' | translate) }}
+        </p>
+      </div>
+    </div>
+    <div class="no-products" *ngIf="products.length === 0">
+      {{ 'no_products_available' | translate }}
+    </div>
+  </main>
+
+  <!-- Modal oynasi -->
+  <div class="modal" *ngIf="selectedProduct">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">×</span>
+      <h2>{{ selectedProduct.name }}</h2>
+      <div class="modal-slider">
+        <button class="prev" (click)="prevImage()" [disabled]="currentImageIndex === 0">❮</button>
+        <div class="modal-image">
+          <img
+            [src]="selectedProduct.imageUrls[currentImageIndex]"
+            [alt]="selectedProduct.name"
+            *ngIf="selectedProduct.imageUrls && selectedProduct.imageUrls.length > 0"
+          />
+        </div>
+        <button
+          class="next"
+          (click)="nextImage()"
+          [disabled]="currentImageIndex === selectedProduct.imageUrls.length - 1"
+        >
+          ❯
+        </button>
+      </div>
+      <p><strong>{{ 'category' | translate }}:</strong> {{ selectedProduct.category }}</p>
+      <p><strong>{{ 'description' | translate }}:</strong> {{ selectedProduct.description }}</p>
+      <p><strong>{{ 'price' | translate }}:</strong> {{ selectedProduct.price | currency: 'USD' }}</p>
+      <p>
+        <strong>{{ 'stock' | translate }}:</strong>
+        {{ selectedProduct.stock > 0 ? selectedProduct.stock : ('out_of_stock' | translate) }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>{{ 'footer_text' | translate }} © {{ currentYear }}</p>
+  </footer>
+</div>

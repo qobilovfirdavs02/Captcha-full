@@ -1,0 +1,124 @@
+:root {
+  --primary-color: #007bff;
+  --hover-color: #0056b3;
+  --text-color: #333;
+  --header-bg: #f8f9fa;
+  --sidebar-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+  --primary-color: #66b0ff;
+  --hover-color: #99ccff;
+  --text-color: #ffffff;
+  --header-bg: #2c2c2c;
+  --sidebar-bg: #1e1e1e;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--header-bg);
+  padding: 1rem;
+
+  .auth-card {
+    background: var(--sidebar-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    width: 100%;
+    max-width: 400px;
+
+    h2 {
+      color: var(--text-color);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--header-bg);
+        border-radius: 8px;
+        background: var(--header-bg);
+        color: var(--text-color);
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 5px var(--shadow-color);
+        }
+
+        &::placeholder {
+          color: #aaa;
+        }
+      }
+
+      &.recaptcha {
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem 0;
+
+        .g-recaptcha {
+          transform: scale(0.9); // Agar reCAPTCHA kichikroq bo‘lishini xohlasangiz
+          transform-origin: center;
+        }
+      }
+    }
+
+    .auth-button {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: var(--hover-color);
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .toggle-text {
+      text-align: center;
+      color: var(--text-color);
+      margin-top: 1rem;
+      font-size: 0.9rem;
+
+      .toggle-link {
+        color: var(--primary-color);
+        cursor: pointer;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--hover-color);
+        }
+      }
+    }
+  }
+}

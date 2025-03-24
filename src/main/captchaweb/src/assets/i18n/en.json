@@ -14,5 +14,35 @@
     "confirm new password": "Confirm New Password",
     "save": "Save",
     "email": "Email",
-    "loading": "Loading"
+    "loading": "Loading",
+ 
+
+    
+    "general_management": "General Management",
+    "add_product": "Add Product",
+    "edit_product": "Edit Product",
+    "products": "Products",
+    "product_id": "Product ID",
+    "name": "Name",
+    "description": "Description",
+    "price": "Price",
+    "stock": "Stock",
+    "images": "Images",
+    "actions": "Actions",
+    "add": "Add",
+    "update": "Update",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "image_url": "Image URL",
+    "add_image": "Add Image",
+    "category": "Category",
+    "select_category": "Select a category",
+    "shop_name": "Shop",
+  "in_stock": "In Stock",
+  "out_of_stock": "Out of Stock",
+  "no_products_available": "No products available",
+  "footer_text": "All rights reserved",
+  "verify_password": "Verify Password"
+    
   }

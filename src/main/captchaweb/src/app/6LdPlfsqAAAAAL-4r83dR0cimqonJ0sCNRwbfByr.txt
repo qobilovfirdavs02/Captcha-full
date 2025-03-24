@@ -1,8 +1,22 @@
 6LdPlfsqAAAAAL-4r83dR0cimqonJ0sCNRwbfByr site key 
 6LdPlfsqAAAAAO1U6XPPIRrVasLICWF2HycD_zNV secret key
 
-Mynewapp02@!
+Mynewapp02!!
 
 dwovp8bhl
 471414582573865
 soJzEW_5MNJwYhj9IzJS13si6uQ
+
+
+
+
+
+
+https://res.cloudinary.com/dwovp8bhl/image/upload/v1741096438/airpodspro_e2d7pk.webp
+https://res.cloudinary.com/dwovp8bhl/image/upload/v1741013949/asus_vc5lrg.webp
+https://res.cloudinary.com/dwovp8bhl/image/upload/v1741006798/shopping2_auvjkm.webp
+https://res.cloudinary.com/dwovp8bhl/image/upload/v1741006143/samples/chair.png
+https://res.cloudinary.com/dwovp8bhl/image/upload/v1741006142/samples/chair-and-coffee-table.jpg
+https://res.cloudinary.com/dwovp8bhl/image/upload/v1741006135/samples/landscapes/beach-boat.jpg
+
+.requestMatchers("/api/register", "/api/login", "/api/profile", "/api/password-reset").permitAll()

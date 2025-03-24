@@ -15,5 +15,35 @@
     "confirm new password": "Yangi parolni tasdiqlash",
     "save": "Saqlash",
     "email": "Email",
-    "loading": "Yuklanmoqda"
+    "loading": "Yuklanmoqda",
+
+    
+    
+      "general_management": "Umumiy boshqaruv",
+      "add_product": "Mahsulot qo‘shish",
+      "edit_product": "Mahsulotni tahrirlash",
+      "products": "Mahsulotlar",
+      "product_id": "Mahsulot ID",
+      "name": "Nomi",
+      "description": "Tavsif",
+      "price": "Narx",
+      "stock": "Zaxira",
+      "images": "Rasmlar",
+      "actions": "Amallar",
+      "add": "Qo‘shish",
+      "update": "Yangilash",
+      "edit": "Tahrirlash",
+      "delete": "O‘chirish",
+      "cancel": "Bekor qilish",
+      "image_url": "Rasm URL",
+      "add_image": "Rasm qo‘shish",
+      "category": "Kategoriya",
+     "select_category": "Kategoriyani tanlang",
+     "shop_name": "Do‘kon",
+  "in_stock": "Sotuvda",
+  "out_of_stock": "Sotuvda yo‘q",
+  "no_products_available": "Mahsulotlar mavjud emas",
+  "footer_text": "Barcha huquqlar himoyalangan",
+  "verify_password": "Parolni tasdiqlash"
+    
   }

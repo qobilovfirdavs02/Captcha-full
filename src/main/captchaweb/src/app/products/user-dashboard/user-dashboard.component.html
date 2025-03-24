@@ -1,0 +1,12 @@
+<div class="dashboard-container">
+    <h2>Foydalanuvchi Dashboard</h2>
+    <button class="logout-button" (click)="logout()">Chiqish</button>
+    <div class="products-list">
+      <h3>Sizning mahsulotlaringiz</h3>
+      <ul>
+        <li *ngFor="let product of products">
+          {{ product.name }} - {{ product.description }}
+        </li>
+      </ul>
+    </div>
+  </div>
