@@ -66,7 +66,7 @@ export class UserAuthComponent {
       username: this.username,
       email: this.email,
       password: this.password,
-      recaptchaToken: this.recaptchaToken,
+      recaptchaToken: this.recaptchaToken, // Token yuboriladi, lekin backendda ishlatilmaydi
     };
     this.http.post('http://localhost:8080/api/user/register', body, { responseType: 'text' }).subscribe({
       next: () => {

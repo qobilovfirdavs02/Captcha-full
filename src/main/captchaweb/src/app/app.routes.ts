@@ -11,12 +11,12 @@ import { UserDashboardComponent } from './products/user-dashboard/user-dashboard
 
 export const routes: Routes = [
   { path: '', component: ProductListComponent }, 
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'password-reset', component: PasswordResetComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'general-management', component: GeneralManagementComponent },
+  { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/register', component: RegisterComponent },
+  { path: 'admin/profile', component: ProfileComponent },
+  { path: 'admin/password-reset', component: PasswordResetComponent },
+  { path: 'admin/dashboard', component: DashboardComponent },
+  { path: 'admin/general-management', component: GeneralManagementComponent },
   { path: 'auth', component: UserAuthComponent},
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: '**', redirectTo: '' }, 
