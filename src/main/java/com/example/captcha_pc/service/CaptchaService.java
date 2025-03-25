@@ -1,11 +1,15 @@
 package com.example.captcha_pc.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
 @Service
 public class CaptchaService {
+    private static final Logger logger = LoggerFactory.getLogger(CaptchaService.class);
 
     @Value("${recaptcha.secret}")
     private String recaptchaSecret;

@@ -15,9 +15,20 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User registerUser(User user) {
-        // Email allaqachon mavjudligini tekshirish
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+    @Autowired
+    private CaptchaService captchaService; // CaptchaService injeksiya qilindi
+
+    public User registerUser(User user, String recaptchaToken) {
+        // reCAPTCHA tekshiruvi
+        if (!captchaService.verifyCaptcha(recaptchaToken)) {
+            throw new IllegalArgumentException("reCAPTCHA tasdiqlanmadi!");
+        }
+
+        // Username yoki email allaqachon mavjudligini tekshirish
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("Bu username allaqachon ro‘yxatdan o‘tgan!");
+        }
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Bu email allaqachon ro‘yxatdan o‘tgan!");
         }
 
@@ -28,20 +39,20 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User loginUser(String email, String password) {
-        User user = userRepository.findByEmail(email);
+    public User loginUser(String username, String password) {
+        User user = userRepository.findByUsername(username).orElse(null);
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             return user;
         }
         return null;
     }
 
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
     }
 
-    public void resetPassword(String email, String oldPassword, String newPassword) {
-        User user = userRepository.findByEmail(email);
+    public void resetPassword(String username, String oldPassword, String newPassword) {
+        User user = userRepository.findByUsername(username).orElse(null);
         if (user == null) {
             throw new IllegalArgumentException("Foydalanuvchi topilmadi!");
         }
